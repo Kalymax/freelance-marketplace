@@ -3,7 +3,6 @@ const express = require("express");
 router.get("/", (req, res) => {
   res.send("Chat route working");
 });
-const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const Chat = require("../models/chat");
