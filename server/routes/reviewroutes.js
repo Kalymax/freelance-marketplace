@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Review = require("../models/review");
-const verifyToken = require("../middleware/verifyToken");
+const verifyToken = require("../middleware/verifytoken");
 
 // POST: Create a review
 router.post("/", verifyToken, async (req, res) => {
