@@ -1,9 +1,9 @@
 const express = require("express");
 
+const router = express.Router();
 router.get("/", (req, res) => {
   res.send("Chat route working");
 });
-const router = express.Router();
 const jwt = require("jsonwebtoken");
 const Chat = require("../models/chat");
 const Message = require("../models/message");
