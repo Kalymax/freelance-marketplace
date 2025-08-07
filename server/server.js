@@ -13,6 +13,7 @@ const authRoutes = require("./routes/authroutes");
 const gigRoutes = require("./routes/gigroutes");
 const orderRoutes = require("./routes/orderroutes");
 const messageRoutes = require("./routes/messageroutes");
+const chatRoutes = require("./routes/chat");
 
 app.use(cors());
 app.use(express.json());
@@ -22,7 +23,7 @@ app.use("/api/gigs", gigRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/reviews", reviewRoutes);
-app.use("/api/chat", require("./routes/chat"));
+app.use("/api/chat", chatRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
