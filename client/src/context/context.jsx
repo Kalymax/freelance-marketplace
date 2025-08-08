@@ -3,7 +3,9 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 export const UserContext = createContext();
-
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 

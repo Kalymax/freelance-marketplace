@@ -13,11 +13,11 @@ const Dashboard = () => {
   useEffect(() => {
     if (!user) return;
 
-    axios.get(`http://localhost:5000/api/gigs/user/${user._id}`)
+    axios.get(`import.meta.env.VITE_API_URL/api/gigs/user/${user._id}`)
       .then(res => setMyGigs(res.data))
       .catch(err => console.error("Failed to fetch gigs", err));
 
-    axios.get(`http://localhost:5000/api/orders/user/${user._id}`, {
+    axios.get(`import.meta.env.VITE_API_URL/api/orders/user/${user._id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setMyOrders(res.data))

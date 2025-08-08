@@ -15,7 +15,7 @@ const Chat = () => {
     if (!token) return;
 
     axios
-      .get(`http://localhost:5000/api/chat/${id}`, {
+      .get(`import.meta.env.VITE_API_URL`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -34,7 +34,7 @@ const Chat = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/chat/${id}/message`,
+        `import.meta.env.VITE_API_URL/message`,
         { text: newMessage },
         {
           headers: { Authorization: `Bearer ${token}` },

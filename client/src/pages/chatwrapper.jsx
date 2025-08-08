@@ -12,7 +12,7 @@ const ChatWrapper = () => {
     if (!token || !user) return;
 
     axios
-      .get("http://localhost:5000/api/chat", {
+      .get("import.meta.env.VITE_API_URL/api/chat", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setChats(res.data))

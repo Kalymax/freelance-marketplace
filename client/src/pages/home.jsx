@@ -21,7 +21,7 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/gigs")
+    axios.get("import.meta.env.VITE_API_URL/api/gigs")
       .then(res => {
         setGigs(res.data);
         setFilteredGigs(res.data);
@@ -49,7 +49,7 @@ const Home = () => {
     const userId = localStorage.getItem("userId");
   
     if (token && userId) {
-      axios.get(`http://localhost:5000/api/orders/user/${userId}`, {
+      axios.get(`import.meta.env.VITE_API_URL/api/orders/user/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => setUserOrders(res.data))

@@ -14,14 +14,14 @@ const GigDetail = () => {
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/gigs/${id}`)
+    axios.get(`import.meta.env.VITE_API_URL/api/gigs/${id}`)
       .then(res => setGig(res.data))
       .catch(err => {
         console.error(err);
         setError("Gig not found or failed to load.");
       });
 
-    axios.get(`http://localhost:5000/api/reviews/${id}`)
+    axios.get(`import.meta.env.VITE_API_URL/api/reviews/${id}`)
       .then(res => setReviews(res.data))
       .catch(err => console.error("Review fetch error", err));
   }, [id]);
@@ -31,7 +31,7 @@ const GigDetail = () => {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/chat/send",
+      "import.meta.env.VITE_API_URL/api/chat/send",
       {
         recipientId: gig.user, // gig owner
         text: "Hi! I'm interested in your gig.",
@@ -52,7 +52,7 @@ const GigDetail = () => {
     if (!token) return alert("Login required");
 
     try {
-      await axios.post("http://localhost:5000/api/reviews", {
+      await axios.post("import.meta.env.VITE_API_URL/api/reviews", {
         gig: id,
         rating: newReview.rating,
         comment: newReview.comment,
@@ -63,7 +63,7 @@ const GigDetail = () => {
       setNewReview({ rating: 0, comment: "" });
 
       // Reload reviews
-      const res = await axios.get(`http://localhost:5000/api/reviews/${id}`);
+      const res = await axios.get(`import.meta.env.VITE_API_URL/api/reviews/${id}`);
       setReviews(res.data);
     } catch (err) {
       console.error("Submit review failed", err);
